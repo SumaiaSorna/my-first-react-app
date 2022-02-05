@@ -1,38 +1,225 @@
-.App {
-  text-align: center;
+:root {
+  --dark: #141414;
+  --font-info: #e5e5e5;
+  --font-hover: #e5e5e5be;
+  --primary-btn: #e5091499;
+  --primary-btn-hover: #e50914;
+  --movie-price: #f5c518;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+html,
+body {
+  margin: 0;
   min-height: 100vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+  color: #fff;
+  font-size: 10px;
+  background-color: var(--dark);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 6.8rem;
+  background-color: var(--dark);
+}
+
+.nav-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
+}
+
+.nav-links-container {
+  display: flex;
+  flex: 2;
+}
+
+.nav-link {
+  margin: 1.6rem;
+}
+
+.nav-link a {
+  text-decoration: none;
+  color: var(--font-info);
+  font-size: 1.4rem;
+}
+
+.nav-link a:hover {
+  color: var(--font-hover);
+}
+
+.nav-links-profile {
+  margin: 1.6rem;
+}
+
+.thumbnail-image:hover {
+  border: 0.1rem solid white;
+}
+
+.thumbnail-image {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.banner {
+  height: 38rem;
+  background-image: linear-gradient(
+      to top,
+      rgb(20, 20, 20, 0.7),
+      rgba(133, 133, 133, 0.2)
+    ),
+    url("https://github.com/surajverma2587/codeflix-html-css/blob/main/assets/images/banner.jpeg?raw=true");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.banner:hover {
+  background-image: url("https://github.com/surajverma2587/codeflix-html-css/blob/main/assets/images/banner.jpeg?raw=true");
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 500;
+  color: var(--font-info);
+  letter-spacing: 0.4rem;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: moveInFromTopWithBounce 1s ease-out;
+}
+
+.banner-info {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn {
+  min-width: 20rem;
+  padding: 2rem;
+  background-color: var(--primary-btn);
+  border-radius: 4rem;
+  color: var(--font-info);
+  text-decoration: none;
+  font-size: 1.8rem;
+}
+
+.btn:hover {
+  background-color: var(--primary-btn-hover);
+}
+
+.sub-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--font-info);
+  letter-spacing: 0.4rem;
+}
+
+.movies-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.movie-card {
+  border: 0.1rem solid var(--font-info);
+  width: 20rem;
+  margin: 2rem;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.movie-year {
+  position: absolute;
+  bottom: 0;
+  padding: 0.8rem;
+  background-color: var(--primary-btn-hover);
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
+  font-weight: 500;
+}
+
+.movie-price {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.8rem;
+  background-color: var(--movie-price);
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.movie-card:hover {
+  animation: grow 0.5s ease-out;
+  cursor: pointer;
+  transform: scale(1.4);
+  z-index: 2;
+}
+
+@media screen and (max-width: 576px) {
+  .header {
+    height: auto;
+    background-color: var(--dark);
   }
-  to {
-    transform: rotate(360deg);
+
+  .banner {
+    margin-top: 354px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+  }
+
+  .nav-links-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@keyframes moveInFromTopWithBounce {
+  0% {
+    top: 0%;
+  }
+
+  75% {
+    top: 45%;
+  }
+
+  100% {
+    top: 40%;
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.4);
   }
 }
